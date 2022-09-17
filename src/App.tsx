@@ -1,26 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import alvaLogo from "./assets/alva-logo-name.svg";
+import "./App.css";
+import { ComingSoon } from "./components/ComingSoon/ComingSoon";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <ComingSoon></ComingSoon>;
 }
 
 export default App;

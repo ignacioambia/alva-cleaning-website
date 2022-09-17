@@ -1,0 +1,50 @@
+.coming-soon-wrapper{
+ inset: 0;
+ display: flex;
+ justify-content: center;
+
+ .body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 11.5vh;
+  top: 50%;
+  height: 100vh;
+  max-width: 650px;
+  span{
+   color: #1a1a1a;
+   text-align: center;
+  }
+
+  .upper-msg{
+   font-size: clamp(21px,3.7vw, 56px);
+  }
+
+  .lower-msg{
+   font-size: clamp(30px,5.3vw, 60px);
+  }
+
+  .logo{
+
+   @keyframes logo-animation {
+    from{
+     transform: scale(1);
+    }
+
+    50%{
+     transform: scale(1.1);
+    }
+
+    to{
+     transform: scale(1);
+    }
+   }
+
+   animation: logo-animation 20s;
+   animation-iteration-count: infinite;
+
+  }
+
+  }
+}
