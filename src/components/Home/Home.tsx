@@ -1,4 +1,13 @@
-import { Autocomplete, Button, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+} from "@mui/material";
 import { MobileDatePicker } from "@mui/x-date-pickers";
 import axios from "axios";
 import { Moment } from "moment";
@@ -19,6 +28,7 @@ interface HomeState {
   timePickerFilled: boolean;
   addresses: any[];
   servicePayload: Partial<Service>;
+  dialogOpen: boolean;
 }
 
 class Home extends React.Component<HomeProps, HomeState> {
@@ -38,6 +48,7 @@ class Home extends React.Component<HomeProps, HomeState> {
       phone: "",
       reference: "",
     },
+    dialogOpen: false,
   };
 
   timePickerRef = React.createRef<any>();
@@ -106,7 +117,9 @@ class Home extends React.Component<HomeProps, HomeState> {
   createService = () => {
     axios
       .post("http://localhost:8000/services", this.state.servicePayload)
-      .then(({ data }) => {});
+      .then(({ data }) => {
+        this.setState({ dialogOpen: true });
+      });
   };
 
   getPlaceIdDetails = async (placeId: string) => {
@@ -117,9 +130,18 @@ class Home extends React.Component<HomeProps, HomeState> {
     ).data.result.geometry;
   };
 
+  closeAlert = () => {
+    this.setState({ dialogOpen: false });
+  };
+
   render() {
-    const { pickerOptionOpen, timePickerFilled, addresses, servicePayload } =
-      this.state;
+    const {
+      pickerOptionOpen,
+      timePickerFilled,
+      addresses,
+      servicePayload,
+      dialogOpen,
+    } = this.state;
     return (
       <div className="form-wrapper">
         <TextField
@@ -201,6 +223,28 @@ class Home extends React.Component<HomeProps, HomeState> {
             Pedir servicio
           </Button>
         </div>
+
+        <Dialog
+          open={dialogOpen}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            ¡Felicitaciones, acabas de crear un Servicio!
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              En breve nos comunicaremos contigo para darte más detalles sobre
+              el servicio que acabas de crear
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            {/* onClick={handleClose} */}
+            <Button autoFocus onClick={this.closeAlert}>
+              Hecho
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }
