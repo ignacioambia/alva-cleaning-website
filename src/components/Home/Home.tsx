@@ -65,7 +65,7 @@ class Home extends React.Component<HomeProps, HomeState> {
   searchAddress = (address: string) => {
     axios
       .get(
-        `http://localhost:8000/maps/api/place/autocomplete/json?input=${address}`
+        `https://blooming-stream-60649.herokuapp.com/maps/api/place/autocomplete/json?input=${address}`
       )
       .then(({ data }) => {
         const formattedAddresses = data.predictions.map((e: any) => {
@@ -116,7 +116,10 @@ class Home extends React.Component<HomeProps, HomeState> {
 
   createService = () => {
     axios
-      .post("http://localhost:8000/services", this.state.servicePayload)
+      .post(
+        "https://blooming-stream-60649.herokuapp.com/services",
+        this.state.servicePayload
+      )
       .then(({ data }) => {
         this.setState({ dialogOpen: true });
       });
@@ -125,7 +128,7 @@ class Home extends React.Component<HomeProps, HomeState> {
   getPlaceIdDetails = async (placeId: string) => {
     return (
       await axios.get(
-        `http://localhost:8000/maps/api/place/details/json?place_id=${placeId}`
+        `https://blooming-stream-60649.herokuapp.com/maps/api/place/details/json?place_id=${placeId}`
       )
     ).data.result.geometry;
   };
