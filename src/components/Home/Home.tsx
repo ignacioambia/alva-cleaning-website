@@ -102,7 +102,6 @@ class Home extends React.Component<HomeProps, HomeState> {
   };
 
   handleAddressChange = async (e: React.SyntheticEvent, value: any) => {
-    console.log("e is: ", value);
     const { location } = await this.getPlaceIdDetails(value.place_id);
     const { servicePayload } = this.state;
     servicePayload.address = {
@@ -137,6 +136,15 @@ class Home extends React.Component<HomeProps, HomeState> {
     this.setState({ dialogOpen: false });
   };
 
+  checkIfDisableBtn = (): boolean => {
+    const { servicePayload } = this.state;
+
+    const emptyValue = Object.values(servicePayload).some((e) => !e);
+    if (emptyValue) return true;
+    if (!servicePayload.address) return true;
+    return false;
+  };
+
   render() {
     const {
       pickerOptionOpen,
@@ -145,6 +153,8 @@ class Home extends React.Component<HomeProps, HomeState> {
       servicePayload,
       dialogOpen,
     } = this.state;
+
+    const disableBtn = this.checkIfDisableBtn();
     return (
       <div className="form-wrapper">
         <TextField
@@ -215,12 +225,15 @@ class Home extends React.Component<HomeProps, HomeState> {
               value: e.target.value,
             })
           }
-          label="Referencias de localidad (opcional)"
+          label="Referencias de localidad"
         />
         <div className="btn-wrapper">
+          <div className={`error-msg ${disableBtn && "active"}`}>
+            Llena todos los inputs para poder generar un servicio
+          </div>
           <Button
             onClick={this.createService}
-            disabled={false}
+            disabled={disableBtn}
             variant="contained"
           >
             Pedir servicio

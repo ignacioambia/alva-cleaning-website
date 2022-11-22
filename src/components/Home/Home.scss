@@ -74,26 +74,25 @@
 
 .btn-wrapper{
   display: flex;
-  justify-content: end;
+  align-items: center;
   width: 100%;
+  gap: 10px;
+
+  .error-msg{
+    font-size: 14px;
+    text-align: center;
+    flex-grow: 1;
+    color: #525252;
+    opacity: 0;
+    transition: opacity .3s;
+
+    &.active{
+      opacity: 1;
+    }
+  }
+
+  Button{
+    min-width: 160px;
+  }
 }
-// .rc-time-picker{
-//  // display: none;
-//  visibility: hidden;
 
-// }
-
-
-// .rc-time-picker-panel-input-wrap{
-//  display: none;
-// }
-
-
-
-
-// .rc-time-picker-panel-inner{
-//  width: 301px;
-// }
-// .rc-time-picker-panel-select{
-//  width: 150px;
-// }
