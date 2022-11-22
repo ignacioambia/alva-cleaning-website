@@ -133,8 +133,8 @@ class Home extends React.Component<HomeProps, HomeState> {
   };
 
   closeAlert = () => {
-    this.setState({ dialogOpen: false });
-  };
+    window.location.reload();
+  };;
 
   checkIfDisableBtn = (): boolean => {
     const { servicePayload } = this.state;
@@ -144,6 +144,11 @@ class Home extends React.Component<HomeProps, HomeState> {
     if (!servicePayload.address) return true;
     return false;
   };
+
+  componentDidMount() {
+    //line to wake up backend in case is not already
+    axios.get('https://blooming-stream-60649.herokuapp.com')
+  }
 
   render() {
     const {
