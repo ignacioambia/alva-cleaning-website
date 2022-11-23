@@ -18,6 +18,7 @@ import * as React from "react";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import { Service } from "../../interfaces/Service";
+import AlvaAlert from "../AlvaAlert/AlvaAlert";
 
 import "./Home.scss";
 
@@ -134,7 +135,7 @@ class Home extends React.Component<HomeProps, HomeState> {
 
   closeAlert = () => {
     window.location.reload();
-  };;
+  };
 
   checkIfDisableBtn = (): boolean => {
     const { servicePayload } = this.state;
@@ -147,7 +148,7 @@ class Home extends React.Component<HomeProps, HomeState> {
 
   componentDidMount() {
     //line to wake up backend in case is not already
-    axios.get('https://blooming-stream-60649.herokuapp.com')
+    axios.get("https://blooming-stream-60649.herokuapp.com");
   }
 
   render() {
@@ -266,6 +267,16 @@ class Home extends React.Component<HomeProps, HomeState> {
             </Button>
           </DialogActions>
         </Dialog>
+
+        <AlvaAlert open={window.location.href != "https://www.alva.cleaning/"}>
+          <div className="header">Nuevo link!</div>
+          <div>
+            Ahora la página está disponible en{" "}
+            <a className="url" href="https://alva.cleaning">
+              alva.cleaning
+            </a>
+          </div>
+        </AlvaAlert>
       </div>
     );
   }
