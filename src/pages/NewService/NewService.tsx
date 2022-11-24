@@ -20,11 +20,11 @@ import "react-datetime/css/react-datetime.css";
 import { Service } from "../../interfaces/Service";
 import AlvaAlert from "../../components/AlvaAlert/AlvaAlert";
 
-import "./Home.scss";
+import "./NewService.scss";
 
-interface HomeProps {}
+interface NewServiceProps {}
 
-interface HomeState {
+interface NewServiceState {
   pickerOptionOpen: boolean;
   timePickerFilled: boolean;
   addresses: any[];
@@ -32,7 +32,7 @@ interface HomeState {
   dialogOpen: boolean;
 }
 
-class Home extends React.Component<HomeProps, HomeState> {
+class NewService extends React.Component<NewServiceProps, NewServiceState> {
   state = {
     pickerOptionOpen: false,
     timePickerFilled: false,
@@ -282,4 +282,4 @@ class Home extends React.Component<HomeProps, HomeState> {
   }
 }
 
-export default Home;
+export default NewService;
