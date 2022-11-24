@@ -6,6 +6,7 @@ import NewService from "./pages/NewService/NewService";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
+import Header from "./components/Header/Header";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,9 +21,9 @@ function App() {
   ]);
   return (
     <React.Fragment>
-      <AppBar position="static">
-        <Toolbar>Alva Cleaning</Toolbar>
-      </AppBar>
+      <Header
+        showCreateServiceBtn={window.location.pathname != "/new-service"}
+      ></Header>
 
       <RouterProvider router={router} />
     </React.Fragment>
