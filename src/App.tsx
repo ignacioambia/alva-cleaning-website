@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import alvaLogo from "./assets/alva-logo-name.svg";
 import "./App.css";
-import Home from "./pages/Home/Home";
+import Home from "./pages/NewService/NewService";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
