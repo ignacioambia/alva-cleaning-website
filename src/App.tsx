@@ -2,10 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import alvaLogo from "./assets/alva-logo-name.svg";
 import "./App.css";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home/Home";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Landing from "./components/Landing/Landing";
+import Landing from "./pages/Landing/Landing";
 
 function App() {
   const router = createBrowserRouter([

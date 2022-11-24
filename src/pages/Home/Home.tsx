@@ -18,7 +18,7 @@ import * as React from "react";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import { Service } from "../../interfaces/Service";
-import AlvaAlert from "../AlvaAlert/AlvaAlert";
+import AlvaAlert from "../../components/AlvaAlert/AlvaAlert";
 
 import "./Home.scss";
 
